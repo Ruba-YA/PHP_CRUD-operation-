@@ -1,3 +1,6 @@
+<?php
+require_once("../includes/db.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -127,51 +130,32 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <?php
+                                            $query = "SELECT * FROM category";
+                                            $result = mysqli_query($con, $query);
+                                            while($row = mysqli_fetch_assoc($result))
+                                            {
+                                                $cat_id = $row['cat_id'];
+                                                $cat_title = $row['Cat_title'];
+                                          echo "
                                             <tr>
-                                                <td>1</td>
+                                                <td>$cat_id</td>
                                                 <td>
-                                                    <a href="#">
-                                                        Lifestyle
+                                                    <a href='#'>
+                                                    $cat_title
                                                     </a>
                                                 </td>
                                                
                                                 <td>
-                                                    <button class="btn btn-blue btn-icon"><i data-feather="edit"></i></button>
+                                                    <button class='btn btn-blue btn-icon'><i data-feather='edit'></i></button>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
+                                                    <button class='btn btn-red btn-icon'><i data-feather='trash-2'></i></button>
                                                 </td>
-                                            </tr>     
-                                            <tr>
-                                                <td>2</td>
-                                                <td>
-                                                    <a href="#">
-                                                        home
-                                                    </a>
-                                                </td>
-                                              
-                                                <td>
-                                                    <button class="btn btn-blue btn-icon"><i data-feather="edit"></i></button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>
-                                                    <a href="#">
-                                                        Programming
-                                                    </a>
-                                                </td>
-                                              
-                                                <td>
-                                                    <button class="btn btn-blue btn-icon"><i data-feather="edit"></i></button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                                                </td>
-                                            </tr>     
+                                            </tr>     ";
+                                        }
+                                        ?>
+                                                
                                         </tbody>
                                     </table>
                                 </div>
