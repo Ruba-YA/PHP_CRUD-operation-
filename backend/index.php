@@ -1,4 +1,6 @@
-
+<?php
+require_once("../includes/db.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -121,9 +123,14 @@
 Posts
                                     
                                     </p>
-
+<?php
+$query = "SELECT * FROM posts";
+$result = mysqli_query($con, $query);
+$num_rows = mysqli_num_rows($result);
+echo "<p>$num_rows</p>";
+?>
                                     
-                                    <p>22</p>
+                                    
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="all-post.php">View Details</a>
@@ -137,7 +144,12 @@ Posts
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <p>Categories</p>
 
-                                                           <p>22</p>
+                                    <?php
+$query = "SELECT * FROM category";
+$result = mysqli_query($con, $query);
+$num_rows = mysqli_num_rows($result);
+echo "<p>$num_rows</p>";
+?>
 
                                
                                 </div>
@@ -152,7 +164,12 @@ Posts
                                 <div class="card-body d-flex align-items-center justify-content-between">
                                     <p>Users</p>
 
-                                                               <p>22</p>
+                                    <?php
+$query = "SELECT * FROM users";
+$result = mysqli_query($con, $query);
+$num_rows = mysqli_num_rows($result);
+echo "<p>$num_rows</p>";
+?>
 
                              
                                 </div>
