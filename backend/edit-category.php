@@ -1,3 +1,28 @@
+<?php
+require_once("../includes/db.php");
+
+if(isset($_GET['update']))
+{
+    $getCatId = $_GET['update'];
+    if(isset($_POST['update_category']))
+    {
+        $cat_title = $_POST['cat_title'];
+        $query = "UPDATE category SET Cat_title = '$cat_title' WHERE cat_id = $getCatId ";
+        $result = mysqli_query($con, $query);
+        if(!$result)
+        {
+            echo "Error ";
+
+        }
+        else
+        {
+            header("Location :categories.php");
+        }
+    }
+   
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -113,13 +138,21 @@
                         <div class="card mb-4">
                             <div class="card-header">Create New Category</div>
                             <div class="card-body">
-                                <form>
+                                <?php
+                                $select_cat = "SELECT * FROM category WHERE cat_id =  $getCatId";
+                                $cat_result = mysqli_query($con, $select_cat);
+                                while ($row = mysqli_fetch_assoc($cat_result))
+                                {
+                                    $cat_title= $row['Cat_title'];
+                                }
+                                ?>
+                                <form action="" method="post">
                                     <div class="form-group">
                                         <label for="post-title">Category Name:</label>
-                                        <input class="form-control" id="post-title" type="text" placeholder="Category Name..." />
+                                        <input value="<?php  echo $cat_title?>" name="cat_title" class="form-control" id="post-title" type="text" placeholder="Category Name..." />
                                     </div>
                                 
-                                    <button class="btn btn-primary mr-2 my-1" type="button">Submit now</button>
+                                    <button class="btn btn-primary mr-2 my-1" type="submit" name="update_category">Submit now</button>
                                 </form>
                             </div>
                         </div>
