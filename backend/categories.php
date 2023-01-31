@@ -1,5 +1,19 @@
 <?php
 require_once("../includes/db.php");
+if(isset($_GET['delete']))
+{
+    $getcatId = $_GET['delete'];
+    $query = "DELETE FROM category WHERE cat_id = $getcatId";
+    $result = mysqli_query($con, $query);
+    if(!$result)
+    {
+        echo "Error ";
+    }
+    else
+    {
+        header("Location:categories.php");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -147,10 +161,10 @@ require_once("../includes/db.php");
                                                 </td>
                                                
                                                 <td>
-                                                    <button class='btn btn-blue btn-icon'><i data-feather='edit'></i></button>
+                                                 <a href='categories.php?delete=$cat_id'>   <button class='btn btn-blue btn-icon'><i data-feather='edit'></i></button></a>
                                                 </td>
                                                 <td>
-                                                    <button class='btn btn-red btn-icon'><i data-feather='trash-2'></i></button>
+                                                <a href='categories.php?delete=$cat_id'>     <button class='btn btn-red btn-icon'><i data-feather='trash-2'></i></button></a>
                                                 </td>
                                             </tr>     ";
                                         }
