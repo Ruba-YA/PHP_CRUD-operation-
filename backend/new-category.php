@@ -1,9 +1,17 @@
 <?php
 require_once("../includes/db.php");
-if(isset($_GET['update']))
+if(isset($_POST['add_category']))
 {
-    $getcat_id = $_GET['update'];
-    // $query = "UPDATE category SET Cat_title = ''"
+    $cat_title = $_POST['cat_title'];
+    $query = "INSERT INTO category (Cat_title) VALUES(' $cat_title')";
+    $result = mysqli_query($con, $query);
+    if(!$result)
+    {
+        echo "Error";
+    }
+    else{
+        header("Loaction : categories.php");
+    }
 }
 ?>
 <!DOCTYPE html>
