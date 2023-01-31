@@ -1,6 +1,10 @@
 <?php
 require_once("../includes/db.php");
-
+if(isset($_GET['update']))
+{
+    $getcat_id = $_GET['update'];
+    // $query = "UPDATE category SET Cat_title = ''"
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -117,13 +121,13 @@ require_once("../includes/db.php");
                         <div class="card mb-4">
                             <div class="card-header">Create New Category</div>
                             <div class="card-body">
-                                <form>
+                                <form action="" method="post">
                                     <div class="form-group">
                                         <label for="post-title">Category Name:</label>
-                                        <input class="form-control" id="post-title" type="text" placeholder="Category Name..." />
+                                        <input name="cat_title" class="form-control" id="post-title" type="text" placeholder="Category Name..." />
                                     </div>
                                 
-                                    <button class="btn btn-primary mr-2 my-1" type="button">Submit now</button>
+                                    <button name="add_category" class="btn btn-primary mr-2 my-1" type="submit">Submit now</button>
                                 </form>
                             </div>
                         </div>

@@ -14,6 +14,8 @@ if(isset($_GET['delete']))
         header("Location:categories.php");
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -161,7 +163,7 @@ if(isset($_GET['delete']))
                                                 </td>
                                                
                                                 <td>
-                                                 <a href='categories.php?delete=$cat_id'>   <button class='btn btn-blue btn-icon'><i data-feather='edit'></i></button></a>
+                                                 <a href='new-category.php?update=$cat_id'>   <button class='btn btn-blue btn-icon'><i data-feather='edit'></i></button></a>
                                                 </td>
                                                 <td>
                                                 <a href='categories.php?delete=$cat_id'>     <button class='btn btn-red btn-icon'><i data-feather='trash-2'></i></button></a>
