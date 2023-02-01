@@ -9,15 +9,7 @@ if(isset($_GET['update']))
         $cat_title = $_POST['cat_title'];
         $query = "UPDATE category SET Cat_title = '$cat_title' WHERE cat_id = $getCatId ";
         $result = mysqli_query($con, $query);
-        if(!$result)
-        {
-            echo "Error ";
-
-        }
-        else
-        {
-            header("Location :categories.php");
-        }
+      
     }
    
 }

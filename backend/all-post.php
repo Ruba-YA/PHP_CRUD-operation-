@@ -1,4 +1,13 @@
-
+<?php
+require_once("../includes/db.php");
+if(isset($_GET['delete']))
+{
+    $getpostID = $_GET['delete'];
+    $del_query = "DELETE FROM posts WHERE post_id =$getpostID ";
+    $del_result = mysqli_query($con, $del_query);
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -134,25 +143,39 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
+                                            <?php
+                                            $query = "SELECT * FROM posts ";
+                                            $result = mysqli_query($con, $query);
+                                            while($row = mysqli_fetch_assoc($result))
+                                            {
+                                                $post_id = $row['post_id'];
+                                                $post_title = $row['Post_title'];
+                                                $post_content = $row['post_content'];
+                                                $post_user = $row['post_user'];
+                                                $post_img = $row['post_image'];
+                                                $post_cat_id = $row['cat_id'];
+                                                $post_date = $row['post_date'];
+                                          echo "
                                             <tr>
-                                                <td>1</td>
+                                                <td> $post_id</td>
                                                 <td>
-                                                    <a href="#">Post title.</a>
+                                                    <a href='#'> $post_title.</a>
                                                 </td>
                                              
-                                                <td>home</td>
-                                                <td>RA</td>
-                                                <td>Image</td>
-                                                <td>17 Nov 2020</td>
-                                                <td>Post details</td>
+                                                <td>$post_cat_id</td>
+                                                <td>$post_user</td>
+                                                 <td> </td>
+                                                <td>$post_date</td>
+                                                <td>$post_content</td>
                                             
                                                 <td>
-                                                    <button class="btn btn-blue btn-icon"><i data-feather="edit"></i></button>
+                                                    <button class='btn btn-blue btn-icon'><i data-feather='edit'></i></button>
                                                 </td>
                                                 <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
+                                                <a href='all-post.php?delete= $post_id'>    <button class='btn btn-red btn-icon'><i data-feather='trash-2'></i></button></a>
                                                 </td>
-                                            </tr>  
+                                            </tr>  ";  }
+                                            ?>
                                                            
                                         </tbody>
                                     </table>

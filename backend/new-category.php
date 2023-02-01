@@ -5,13 +5,7 @@ if(isset($_POST['add_category']))
     $cat_title = $_POST['cat_title'];
     $query = "INSERT INTO category (Cat_title) VALUES(' $cat_title')";
     $result = mysqli_query($con, $query);
-    if(!$result)
-    {
-        echo "Error";
-    }
-    else{
-        header("Loaction : categories.php");
-    }
+  
 }
 ?>
 <!DOCTYPE html>
